@@ -9,7 +9,9 @@ uses
   ufrmLight in 'GUI\ufrmLight.pas' {frmLight},
   ufrmDark in 'GUI\ufrmDark.pas' {frmDark},
   ufrmIcon in 'GUI\ufrmIcon.pas' {frmIcon},
-  ufrmPrimary in 'GUI\ufrmPrimary.pas' {frmPrimary};
+  ufrmPrimary in 'GUI\ufrmPrimary.pas' {frmPrimary},
+  ufrmMap in 'GUI\ufrmMap.pas' {frmMap},
+  ufrmLightSimple in 'GUI\ufrmLightSimple.pas' {frmLightSimple};
 
 {$R *.res}
 

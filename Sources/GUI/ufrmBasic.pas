@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FMX.Edit, FMX.Ani, FMX.StdCtrls, FMX.ListBox, FMX.Layouts,
   FMX.Controls.Presentation, FMX.TabControl, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, System.ImageList, FMX.ImgList;
+  FireDAC.Comp.Client, System.ImageList, FMX.ImgList, FMX.MultiView;
 
 type
   TfrmBasic = class(TForm)
@@ -100,12 +100,6 @@ type
     ListBoxItem21: TListBoxItem;
     PanelBottom: TPanel;
     GridPanelLayout1: TGridPanelLayout;
-    btnRecents: TButton;
-    ColorAnimation1: TColorAnimation;
-    btnFavorites: TButton;
-    ColorAnimation2: TColorAnimation;
-    btnNearby: TButton;
-    ColorAnimation3: TColorAnimation;
     animateBottom: TFloatAnimation;
     PanelTop: TPanel;
     PanelMenu: TPanel;
@@ -116,6 +110,16 @@ type
     eSearch: TEdit;
     animateTop: TFloatAnimation;
     tFormShowed: TTimer;
+    btnRecents: TSpeedButton;
+    ColorAnimation4: TColorAnimation;
+    btnFavorites: TSpeedButton;
+    ColorAnimation5: TColorAnimation;
+    btnNearby: TSpeedButton;
+    ColorAnimation6: TColorAnimation;
+    mvSliderMenu: TMultiView;
+    lbMainMenu: TListBox;
+    lbiMoveBack: TListBoxItem;
+    tDestroyAnime: TTimer;
     procedure eSearchEnter(Sender: TObject);
     procedure eSearchExit(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -125,6 +129,9 @@ type
       const OldViewportPosition, NewViewportPosition: TPointF;
       const ContentSizeChanged: Boolean);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure lbiMoveBackClick(Sender: TObject);
+    procedure btnMenuClick(Sender: TObject);
+    procedure tDestroyAnimeTimer(Sender: TObject);
   private
     FSuccProc: TProc;
     FBarsIsShowing: Boolean;
@@ -158,11 +165,6 @@ begin
     frmBasic.Free;
 
   frmBasic:= TfrmBasic.Create(Application);
-  with frmBasic do
-  begin
-
-  end;
-
   Result:= frmBasic;
 end;
 
@@ -179,21 +181,11 @@ end;
 procedure TfrmBasic.FormShow(Sender: TObject);
 begin
   InsertTestDataToTheMemTables();
-
   FBarsIsShowing:= True;
 
-  {if FFormStyle = fmLight then
-  begin
-    ColorAnimation1.StopValue:= TAlphaColor($ff1c6ecd);
-    ColorAnimation2.StopValue:= TAlphaColor($ff1c6ecd);
-    ColorAnimation3.StopValue:= TAlphaColor($ff1c6ecd);
-
-    btnRecents.StylesData['btnTextColorAnimation.StopValue']:= TValue.From<TAlphaColor>(TAlphaColor($ff1c6ecd));
-    btnFavorites.StylesData['btnTextColorAnimation.StopValue']:= TValue.From<TAlphaColor>(TAlphaColor($ff1c6ecd));
-    btnNearby.StylesData['btnTextColorAnimation.StopValue']:= TValue.From<TAlphaColor>(TAlphaColor($ff1c6ecd));
-
-    PanelBottom.StyleLookup:= 'PanelBottomLightStyle';
-  end;}
+  TabItem1.Text:= btnRecents.Text;
+  TabItem2.Text:= btnFavorites.Text;
+  TabItem3.Text:= btnNearby.Text;
 
   tFormShowed.Enabled:= True;
 end;
@@ -208,31 +200,81 @@ begin
 end;
 
 procedure TfrmBasic.btnBottomMenuClick(Sender: TObject);
+
+  procedure StartCircleAnimation(aButton: TSpeedButton = nil);
+  var
+    lAnimane: TFloatAnimation;
+  begin
+    if Assigned(aButton) then
+    begin
+      lAnimane:= aButton.FindStyleResource('CircleAnimation') as  TFloatAnimation;
+
+      if Assigned(lAnimane) then
+        lAnimane.Start;
+    end;
+  end;
+
 begin
+  VertScrollBoxMain.ViewportPosition:= TPointF.Create(0, 0);
+
   eSearch.TextPrompt:= TButton(Sender).Text;
 
   TabControl1.TabIndex:= TFmxObject(Sender).Tag;
 
+  btnRecents.StylesData['Text.TextSettings.Font.Size']:= 14;
+  btnFavorites.StylesData['Text.TextSettings.Font.Size']:= 14;
+  btnNearby.StylesData['Text.TextSettings.Font.Size']:= 14;
+
+  btnRecents.StylesData['Icon.Margins.Top']:= 5;
+  btnFavorites.StylesData['Icon.Margins.Top']:= 5;
+  btnNearby.StylesData['Icon.Margins.Top']:= 5;
+
   case TFmxObject(Sender).Tag of
     0:
       begin
+        btnRecents.StylesData['Icon.Margins.Top']:= 3;
+        btnRecents.StylesData['Text.TextSettings.Font.Size']:= 15;
+        btnRecents.StylesData['Circle.Visible']:= True;
+        StartCircleAnimation(btnRecents);
+
         LoadTopListboxItems(ListBoxTopTab1);
         Load3PartsListboxItems(ListBox3PartsTab1);
         LoadBottomListboxItems(ListBoxBottomTab1);
       end;
     1:
       begin
+        btnFavorites.StylesData['Icon.Margins.Top']:= 3;
+        btnFavorites.StylesData['Text.TextSettings.Font.Size']:= 15;
+        btnFavorites.StylesData['Circle.Visible']:= True;
+        StartCircleAnimation(btnFavorites);
+
         LoadTopListboxItems(ListBoxTopTab2);
         Load3PartsListboxItems(ListBox3PartsTab2);
         LoadBottomListboxItems(ListBoxBottomTab2);
       end;
     2:
       begin
+        btnNearby.StylesData['Icon.Margins.Top']:= 3;
+        btnNearby.StylesData['Text.TextSettings.Font.Size']:= 15;
+        btnNearby.StylesData['Circle.Visible']:= True;
+        StartCircleAnimation(btnNearby);
+
         LoadTopListboxItems(ListBoxTopTab3);
         Load3PartsListboxItems(ListBox3PartsTab3);
         LoadBottomListboxItems(ListBoxBottomTab3);
       end;
   end;
+
+  tDestroyAnime.Enabled:= True;
+end;
+
+procedure TfrmBasic.tDestroyAnimeTimer(Sender: TObject);
+begin
+  tDestroyAnime.Enabled:= False;
+
+  btnRecents.StylesData['Circle.Visible']:= False;
+  btnFavorites.StylesData['Circle.Visible']:= False;
+  btnNearby.StylesData['Circle.Visible']:= False;
 end;
 
 procedure TfrmBasic.tFormShowedTimer(Sender: TObject);
@@ -241,8 +283,9 @@ begin
   begin
     tFormShowed.Enabled:= False;
 
-    btnBottomMenuClick(btnRecents);
-    btnRecents.SetFocus;
+    LoadTopListboxItems(ListBoxTopTab1);
+    Load3PartsListboxItems(ListBox3PartsTab1);
+    LoadBottomListboxItems(ListBoxBottomTab1);
   end;
 end;
 
@@ -581,6 +624,20 @@ begin
 
   FloatAnimationbtnMic.Inverse:= True;
   FloatAnimationbtnMic.Start;
+end;
+
+procedure TfrmBasic.btnMenuClick(Sender: TObject);
+begin
+  if not mvSliderMenu.IsShowed then
+    mvSliderMenu.ShowMaster
+  else
+    mvSliderMenu.HideMaster;
+end;
+
+procedure TfrmBasic.lbiMoveBackClick(Sender: TObject);
+begin
+  mvSliderMenu.HideMaster;
+  Close;
 end;
 
 end.

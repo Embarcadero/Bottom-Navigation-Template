@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList,
   FMX.ImgList, FMX.Edit, FMX.Ani, FMX.StdCtrls, FMX.ListBox, FMX.Layouts,
-  FMX.Controls.Presentation, FMX.TabControl;
+  FMX.Controls.Presentation, FMX.TabControl, FMX.MultiView;
 
 type
   TfrmPrimary = class(TForm)
@@ -101,9 +101,6 @@ type
     ListBoxItem21: TListBoxItem;
     PanelBottom: TPanel;
     GridPanelLayout1: TGridPanelLayout;
-    btnTable: TButton;
-    btnCart: TButton;
-    btnLabel: TButton;
     animateBottom: TFloatAnimation;
     PanelTop: TPanel;
     PanelMenu: TPanel;
@@ -113,6 +110,15 @@ type
     FloatAnimationbtnMic: TFloatAnimation;
     eSearch: TEdit;
     animateTop: TFloatAnimation;
+    mvSliderMenu: TMultiView;
+    lbMainMenu: TListBox;
+    lbiMoveBack: TListBoxItem;
+    btnTable: TSpeedButton;
+    ColorAnimation4: TColorAnimation;
+    btnLabel: TSpeedButton;
+    ColorAnimation6: TColorAnimation;
+    btnCart: TSpeedButton;
+    tDestroyAnime: TTimer;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure btnBottomMenuClick(Sender: TObject);
@@ -122,6 +128,9 @@ type
       const ContentSizeChanged: Boolean);
     procedure eSearchEnter(Sender: TObject);
     procedure eSearchExit(Sender: TObject);
+    procedure btnMenuClick(Sender: TObject);
+    procedure lbiMoveBackClick(Sender: TObject);
+    procedure tDestroyAnimeTimer(Sender: TObject);
   private
     FSuccProc: TProc;
     FBarsIsShowing: Boolean;
@@ -155,11 +164,6 @@ begin
     frmPrimary.Free;
 
   frmPrimary:= TfrmPrimary.Create(Application);
-  with frmPrimary do
-  begin
-
-  end;
-
   Result:= frmPrimary;
 end;
 
@@ -177,6 +181,11 @@ procedure TfrmPrimary.FormShow(Sender: TObject);
 begin
   InsertTestDataToTheMemTables();
   FBarsIsShowing:= True;
+
+  TabItem1.Text:= btnTable.Text;
+  TabItem2.Text:= btnCart.Text;
+  TabItem3.Text:= btnLabel.Text;
+
   tFormShowed.Enabled:= True;
 end;
 
@@ -190,29 +199,65 @@ begin
 end;
 
 procedure TfrmPrimary.btnBottomMenuClick(Sender: TObject);
+
+  procedure StartCircleAnimation(aButton: TSpeedButton = nil);
+  var
+    lAnimane: TFloatAnimation;
+  begin
+    if Assigned(aButton) then
+    begin
+      lAnimane:= aButton.FindStyleResource('CircleAnimation') as  TFloatAnimation;
+
+      if Assigned(lAnimane) then
+        lAnimane.Start;
+    end;
+  end;
+
 begin
+  VertScrollBoxMain.ViewportPosition:= TPointF.Create(0, 0);
+
   TabControl1.TabIndex:= TFmxObject(Sender).Tag;
 
   case TFmxObject(Sender).Tag of
     0:
       begin
+        btnTable.StylesData['Circle.Visible']:= True;
+        StartCircleAnimation(btnTable);
+
         LoadTopListboxItems(ListBoxTopTab1);
         Load3PartsListboxItems(ListBox3PartsTab1);
         LoadBottomListboxItems(ListBoxBottomTab1);
       end;
     1:
       begin
+        btnCart.StylesData['Circle.Visible']:= True;
+        StartCircleAnimation(btnCart);
+
         LoadTopListboxItems(ListBoxTopTab2);
         Load3PartsListboxItems(ListBox3PartsTab2);
         LoadBottomListboxItems(ListBoxBottomTab2);
       end;
     2:
       begin
+        btnLabel.StylesData['Circle.Visible']:= True;
+        StartCircleAnimation(btnLabel);
+
         LoadTopListboxItems(ListBoxTopTab3);
         Load3PartsListboxItems(ListBox3PartsTab3);
         LoadBottomListboxItems(ListBoxBottomTab3);
       end;
   end;
+
+  tDestroyAnime.Enabled:= True;
+end;
+
+procedure TfrmPrimary.tDestroyAnimeTimer(Sender: TObject);
+begin
+  tDestroyAnime.Enabled:= False;
+
+  btnTable.StylesData['Circle.Visible']:= False;
+  btnCart.StylesData['Circle.Visible']:= False;
+  btnLabel.StylesData['Circle.Visible']:= False;
 end;
 
 procedure TfrmPrimary.tFormShowedTimer(Sender: TObject);
@@ -221,8 +266,9 @@ begin
   begin
     tFormShowed.Enabled:= False;
 
-    btnBottomMenuClick(btnTable);
-    btnTable.SetFocus;
+    LoadTopListboxItems(ListBoxTopTab1);
+    Load3PartsListboxItems(ListBox3PartsTab1);
+    LoadBottomListboxItems(ListBoxBottomTab1);
   end;
 end;
 
@@ -561,6 +607,20 @@ begin
 
   FloatAnimationbtnMic.Inverse:= True;
   FloatAnimationbtnMic.Start;
+end;
+
+procedure TfrmPrimary.btnMenuClick(Sender: TObject);
+begin
+  if not mvSliderMenu.IsShowed then
+    mvSliderMenu.ShowMaster
+  else
+    mvSliderMenu.HideMaster;
+end;
+
+procedure TfrmPrimary.lbiMoveBackClick(Sender: TObject);
+begin
+  mvSliderMenu.HideMaster;
+  Close;
 end;
 
 end.

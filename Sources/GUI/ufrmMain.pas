@@ -6,7 +6,8 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
 
   System.Rtti,
-  ufrmBasic, ufrmShifting, ufrmLight, ufrmDark, ufrmIcon, ufrmPrimary,
+  ufrmBasic, ufrmShifting, ufrmLight, ufrmDark, ufrmIcon, ufrmPrimary, ufrmMap,
+  ufrmLightSimple,
 
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Layouts, FMX.ListBox, FMX.Controls.Presentation, FMX.StdCtrls, System.ImageList,
@@ -21,9 +22,7 @@ type
     ImageListButtons: TImageList;
     LayoutContent: TLayout;
     PanelMenu: TPanel;
-    btnMenu: TButton;
-    FloatAnimationbtnMenu: TFloatAnimation;
-    mvSliderMenu: TMultiView;
+    Panel1: TPanel;
     lbMainMenu: TListBox;
     lbiBasic: TListBoxItem;
     lbiShifting: TListBoxItem;
@@ -33,7 +32,6 @@ type
     lbiPrimary: TListBoxItem;
     lbiMapBlue: TListBoxItem;
     lbiLightSimple: TListBoxItem;
-    procedure btnMenuClick(Sender: TObject);
     procedure ListBoxItemClick(Sender: TObject);
   private
     {}
@@ -48,14 +46,6 @@ implementation
 
 {$R *.fmx}
 
-procedure TfrmMain.btnMenuClick(Sender: TObject);
-begin
-  if not mvSliderMenu.IsShowed then
-    mvSliderMenu.ShowMaster
-  else
-    mvSliderMenu.HideMaster;
-end;
-
 procedure TfrmMain.ListBoxItemClick(Sender: TObject);
 begin
   case TListBoxItem(Sender).Tag of
@@ -63,44 +53,51 @@ begin
       ShowBasicForm().RunDialog(
         procedure()
         begin
-          mvSliderMenu.HideMaster;
         end
       );
     1:
       ShowShiftingForm().RunDialog(
         procedure()
         begin
-          mvSliderMenu.HideMaster;
         end
       );
     2:
       ShowLightForm().RunDialog(
         procedure()
         begin
-          mvSliderMenu.HideMaster;
         end
       );
     3:
       ShowDarkForm().RunDialog(
         procedure()
         begin
-          mvSliderMenu.HideMaster;
         end
       );
     4:
       ShowIconForm().RunDialog(
         procedure()
         begin
-          mvSliderMenu.HideMaster;
         end
       );
     5:
       ShowPrimaryForm().RunDialog(
         procedure()
         begin
-          mvSliderMenu.HideMaster;
         end
       );
+    6:
+      ShowMapForm().RunDialog(
+        procedure()
+        begin
+        end
+      );
+    7:
+      ShowLightSimpleForm().RunDialog(
+        procedure()
+        begin
+        end
+      );
+
   end;
 end;
 
