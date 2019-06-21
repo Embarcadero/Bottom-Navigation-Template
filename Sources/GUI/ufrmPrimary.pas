@@ -7,9 +7,9 @@ uses
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, System.Rtti,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList,
-  FMX.ImgList, FMX.Edit, FMX.Ani, FMX.StdCtrls, FMX.ListBox, FMX.Layouts,
-  FMX.Controls.Presentation, FMX.TabControl, FMX.MultiView;
+  FMX.Edit, FMX.Ani, FMX.StdCtrls, FMX.ListBox, FMX.Layouts,
+  FMX.Controls.Presentation, FMX.TabControl, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, System.ImageList, FMX.ImgList, FMX.MultiView;
 
 type
   TfrmPrimary = class(TForm)
