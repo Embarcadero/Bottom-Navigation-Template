@@ -1478,8 +1478,8 @@ object frmPrimary: TfrmPrimary
               DefaultItemStyles.GroupHeaderStyle = ''
               DefaultItemStyles.GroupFooterStyle = ''
               ListStyle = Horizontal
-              Viewport.Width = 456.000000000000000000
-              Viewport.Height = 250.000000000000000000
+              Viewport.Width = 452.000000000000000000
+              Viewport.Height = 246.000000000000000000
               object ListBoxItem1: TListBoxItem
                 Size.Width = 228.000000000000000000
                 Size.Height = 246.000000000000000000
@@ -1549,8 +1549,8 @@ object frmPrimary: TfrmPrimary
               DefaultItemStyles.GroupHeaderStyle = ''
               DefaultItemStyles.GroupFooterStyle = ''
               ListStyle = Horizontal
-              Viewport.Width = 456.000000000000000000
-              Viewport.Height = 200.000000000000000000
+              Viewport.Width = 452.000000000000000000
+              Viewport.Height = 196.000000000000000000
               object ListBoxItem3: TListBoxItem
                 Size.Width = 151.000000000000000000
                 Size.Height = 196.000000000000000000
@@ -1622,8 +1622,8 @@ object frmPrimary: TfrmPrimary
               DefaultItemStyles.GroupHeaderStyle = ''
               DefaultItemStyles.GroupFooterStyle = ''
               ListStyle = Horizontal
-              Viewport.Width = 456.000000000000000000
-              Viewport.Height = 250.000000000000000000
+              Viewport.Width = 452.000000000000000000
+              Viewport.Height = 246.000000000000000000
               object ListBoxItem6: TListBoxItem
                 Size.Width = 228.000000000000000000
                 Size.Height = 246.000000000000000000
@@ -1778,8 +1778,8 @@ object frmPrimary: TfrmPrimary
               DefaultItemStyles.GroupHeaderStyle = ''
               DefaultItemStyles.GroupFooterStyle = ''
               ListStyle = Horizontal
-              Viewport.Width = 456.000000000000000000
-              Viewport.Height = 250.000000000000000000
+              Viewport.Width = 452.000000000000000000
+              Viewport.Height = 246.000000000000000000
               object ListBoxItem8: TListBoxItem
                 Size.Width = 228.000000000000000000
                 Size.Height = 246.000000000000000000
@@ -1842,8 +1842,8 @@ object frmPrimary: TfrmPrimary
               DefaultItemStyles.GroupHeaderStyle = ''
               DefaultItemStyles.GroupFooterStyle = ''
               ListStyle = Horizontal
-              Viewport.Width = 456.000000000000000000
-              Viewport.Height = 200.000000000000000000
+              Viewport.Width = 452.000000000000000000
+              Viewport.Height = 196.000000000000000000
               object ListBoxItem10: TListBoxItem
                 Size.Width = 151.000000000000000000
                 Size.Height = 196.000000000000000000
@@ -1915,8 +1915,8 @@ object frmPrimary: TfrmPrimary
               DefaultItemStyles.GroupHeaderStyle = ''
               DefaultItemStyles.GroupFooterStyle = ''
               ListStyle = Horizontal
-              Viewport.Width = 456.000000000000000000
-              Viewport.Height = 250.000000000000000000
+              Viewport.Width = 452.000000000000000000
+              Viewport.Height = 246.000000000000000000
               object ListBoxItem13: TListBoxItem
                 Size.Width = 228.000000000000000000
                 Size.Height = 246.000000000000000000
@@ -2071,8 +2071,8 @@ object frmPrimary: TfrmPrimary
               DefaultItemStyles.GroupHeaderStyle = ''
               DefaultItemStyles.GroupFooterStyle = ''
               ListStyle = Horizontal
-              Viewport.Width = 456.000000000000000000
-              Viewport.Height = 250.000000000000000000
+              Viewport.Width = 452.000000000000000000
+              Viewport.Height = 246.000000000000000000
               object ListBoxItem15: TListBoxItem
                 Size.Width = 228.000000000000000000
                 Size.Height = 246.000000000000000000
@@ -2135,8 +2135,8 @@ object frmPrimary: TfrmPrimary
               DefaultItemStyles.GroupHeaderStyle = ''
               DefaultItemStyles.GroupFooterStyle = ''
               ListStyle = Horizontal
-              Viewport.Width = 456.000000000000000000
-              Viewport.Height = 200.000000000000000000
+              Viewport.Width = 452.000000000000000000
+              Viewport.Height = 196.000000000000000000
               object ListBoxItem17: TListBoxItem
                 Size.Width = 151.000000000000000000
                 Size.Height = 196.000000000000000000
@@ -2208,8 +2208,8 @@ object frmPrimary: TfrmPrimary
               DefaultItemStyles.GroupHeaderStyle = ''
               DefaultItemStyles.GroupFooterStyle = ''
               ListStyle = Horizontal
-              Viewport.Width = 456.000000000000000000
-              Viewport.Height = 250.000000000000000000
+              Viewport.Width = 452.000000000000000000
+              Viewport.Height = 246.000000000000000000
               object ListBoxItem20: TListBoxItem
                 Size.Width = 228.000000000000000000
                 Size.Height = 246.000000000000000000
@@ -2293,7 +2293,6 @@ object frmPrimary: TfrmPrimary
           OnClick = btnBottomMenuClick
           object ColorAnimation4: TColorAnimation
             Duration = 0.200000002980232200
-            Inverse = True
             PropertyName = 'IconTintColor'
             StartValue = xFF009687
             StopValue = xFF009687
@@ -2453,8 +2452,8 @@ object frmPrimary: TfrmPrimary
         DefaultItemStyles.GroupHeaderStyle = ''
         DefaultItemStyles.GroupFooterStyle = ''
         GroupingKind = Grouped
-        Viewport.Width = 320.000000000000000000
-        Viewport.Height = 643.000000000000000000
+        Viewport.Width = 316.000000000000000000
+        Viewport.Height = 639.000000000000000000
         object lbiMoveBack: TListBoxItem
           Size.Width = 316.000000000000000000
           Size.Height = 50.000000000000000000
@@ -16522,21 +16521,21 @@ object frmPrimary: TfrmPrimary
               89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
               F8000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
               01DA49444154484BED95BB4A0341148677132211B4518988A89D36DE2A2B8D4D
-              029682FA169622512C44ECEC4CE3A5B60EE40902225A59AB20984A0BAD124842
+              029682FA169622512C44ECEC4CE3A5B60EE40902225A59AB20C44A0BAD124842
               2EEB7786B36B42E2660329F3C13033FF39FF99D9DDC9C41AD00D5B7B5F1CC759
               6F341ADBF41BE1707841B47ABDFE6ADBF63D2D130A851E4C62AF5074BE56AB3D
               52D817C9915CB50503C372B95CFE9602DAA76809DA843619A79A73F02CAADD1F
               F2672B95CA97187915198C631A6A43629223B9E2613EA7A1FF2137A7C5EF54EA
               8AE48A07722A7586047974D9CD275D54650F89C1A94E3DD8F9B07A1CC64995AD
               90F61E0477A58F4422694E48D98801E02495F05CCA9835768C089D1688EB30AB
-              7D2F180F3536CD0CDA1628954AE623B1FB0F23F4009EBCF49CA81923B8F081CE
+              7D2F180F3536CD0CDA1628954AE623B1FBBC117A00CF87F49CA81923B8F081CE
               E5DD7582DD9C689A4134CEFD33FA8A4A1E68A3122F168B0595FE60910B093683
               E140C31E685BD56AF53D9FCF63A9DF328F6948624BE223FEA2522B18D2A63274
               2AEE427888F861A15028F2344F2ACB02C7E2A5CE954AAD10B309DE90B8AF922F
               E4C5F0ACCA983EEAFE38216112FA091B0BF6436B06D319ADDB55314E4E562AEB
               5531AD217F489CE263BD89B1F9B2439FA4C56849DA11C7FAC7CD611EECB273C1
-              37C2EEAEA5801F7ED775A03F1CCC6BD4D9A3C5FBFA8733C0B22CEB17F4BD292B
-              2A5471920000000049454E44AE426082}
+              37C2EEAEA5801F7ED775A03F1CCC6BD4D9A3C5FBFA8733C0B22CEB17E8EA2928
+              56F3E6AD0000000049454E44AE426082}
             FileName = 
               'D:\IHOR\Firemonkey\MaterialTemplate\Images\baseline_history_whit' +
               'e_24dp.png'
