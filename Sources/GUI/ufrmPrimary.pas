@@ -266,6 +266,8 @@ begin
   begin
     tFormShowed.Enabled:= False;
 
+    TabControl1.TabIndex:= 0;
+
     LoadTopListboxItems(ListBoxTopTab1);
     Load3PartsListboxItems(ListBox3PartsTab1);
     LoadBottomListboxItems(ListBoxBottomTab1);
