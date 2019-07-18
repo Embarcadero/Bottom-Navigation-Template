@@ -17,7 +17,7 @@ uses
   FMX.TabControl, FMX.MultiView;
 
 type
-  TfrmMain = class(TForm)
+  TfmrMain = class(TForm)
     StyleBookMain: TStyleBook;
     ImageListButtons: TImageList;
     LayoutContent: TLayout;
@@ -40,13 +40,13 @@ type
   end;
 
 var
-  frmMain: TfrmMain;
+  fmrMain: TfmrMain;
 
 implementation
 
 {$R *.fmx}
 
-procedure TfrmMain.ListBoxItemClick(Sender: TObject);
+procedure TfmrMain.ListBoxItemClick(Sender: TObject);
 begin
   case TListBoxItem(Sender).Tag of
     0:
